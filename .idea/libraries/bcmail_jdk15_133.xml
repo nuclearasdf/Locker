@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bcmail-jdk15-133">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/bcmail-jdk15-133.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcpg-jdk15-133.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk15-133.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bctsp-jdk15-133.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
