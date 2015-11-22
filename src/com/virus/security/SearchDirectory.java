@@ -60,12 +60,13 @@ public class SearchDirectory {
         File macDir = new File("/Users/");
         File[] fileList = macDir.listFiles();
         try {
-            //assert fileList != null;
-            for (File file : fileList) {
-                System.out.println(file.getName());
-                if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
-                {
-                    this.defaultDirectiory = file.getCanonicalPath();
+            if (fileList != null) {
+                for (File file : fileList) {
+                    System.out.println(file.getName());
+                    if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
+                    {
+                        this.defaultDirectiory = file.getCanonicalPath();
+                    }
                 }
             }
         }
@@ -83,9 +84,11 @@ public class SearchDirectory {
         File windowDir = new File(System.getenv("SystemDrive")+"\\Users\\");
         File[] fileList = windowDir.listFiles();
         try {
-            for (File file : fileList) {
-                if (!file.getName().equals("Public")) {
-                    this.defaultDirectiory = file.getCanonicalPath();
+            if (fileList != null) {
+                for (File file : fileList) {
+                    if (!file.getName().equals("Public")) {
+                        this.defaultDirectiory = file.getCanonicalPath();
+                    }
                 }
             }
         }
@@ -104,18 +107,20 @@ public class SearchDirectory {
         File dir = new File(source);
         File[] fileList = dir.listFiles();
         try{
-            for(File file : fileList){
-                if(file.isFile()){
-                    // 파일이 있다면 파일 추가
-                    if(isAvalableFile(file)) {
-                        allFiles.add(file);
-                        System.out.println(file.getName());
+            if (fileList != null) {
+                for(File file : fileList){
+                    if(file.isFile()){
+                        // 파일이 있다면 파일 추가
+                        if(isAvalableFile(file)) {
+                            allFiles.add(file);
+                            System.out.println(file.getName());
+                        }
                     }
-                }
-                else if(file.isDirectory())
-                {
-                    // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
-                    subDirList(file.getCanonicalPath());
+                    else if(file.isDirectory())
+                    {
+                        // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
+                        subDirList(file.getCanonicalPath());
+                    }
                 }
             }
         }
@@ -132,11 +137,7 @@ public class SearchDirectory {
     private boolean isAvalableFile(File file)
     {
 //        System.out.println(FilenameUtils.getExtension(file.getName()));
-        if(this.filters.contains(FilenameUtils.getExtension(file.getName())))
-        {
-            return true;
-        }
-        return false;
+        return this.filters.contains(FilenameUtils.getExtension(file.getName()));
     }
 
 }
