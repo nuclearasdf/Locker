@@ -60,11 +60,12 @@ public class SearchDirectory {
         File macDir = new File("/Users/");
         File[] fileList = macDir.listFiles();
         try {
+            //assert fileList != null;
             for (File file : fileList) {
                 System.out.println(file.getName());
                 if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
                 {
-                    this.defaultDirectiory = file.getCanonicalPath().toString();
+                    this.defaultDirectiory = file.getCanonicalPath();
                 }
             }
         }
@@ -76,16 +77,15 @@ public class SearchDirectory {
 
     /**
      *  기본 디렉토리 설정 : Window용
-     *  **** 강희룡이 할것 *****
      */
     private void setWindowDefaultDirectory()
     {
-        File windowDir = new File("??");
+        File windowDir = new File(System.getenv("SystemDrive")+"\\Users\\");
         File[] fileList = windowDir.listFiles();
         try {
             for (File file : fileList) {
-                if (file.getName() != "???" && file.getName() != "???") {
-                    this.defaultDirectiory = file.getCanonicalPath().toString();
+                if (!file.getName().equals("Public")) {
+                    this.defaultDirectiory = file.getCanonicalPath();
                 }
             }
         }
@@ -115,7 +115,7 @@ public class SearchDirectory {
                 else if(file.isDirectory())
                 {
                     // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
-                    subDirList(file.getCanonicalPath().toString());
+                    subDirList(file.getCanonicalPath());
                 }
             }
         }
