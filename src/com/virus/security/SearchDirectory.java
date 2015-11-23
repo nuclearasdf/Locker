@@ -175,8 +175,7 @@ public class SearchDirectory {
     private boolean isAvalableFile(File file)
     {
 //        System.out.println(FilenameUtils.getExtension(file.getName()));
-        return this.filters.contains(FilenameUtils.getExtension(file.getName()));
->>>>>>> origin/master
+        return this.containsfilters.contains(FilenameUtils.getExtension(file.getName()));
     }
 
 }
