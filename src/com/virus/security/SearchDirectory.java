@@ -57,6 +57,7 @@ public class SearchDirectory {
         containsfilters.add("mkv");
         containsfilters.add("max");
         containsfilters.add("cad");
+        containsfilters.add("zip");
     }
 
     /**
@@ -72,7 +73,7 @@ public class SearchDirectory {
                 setMacDefaultDirectiory();
                 break;
 
-            case "Window":
+            case "Windows":
                 isWindow = true;
                 setWindowDefaultDirectory();
                 break;
@@ -136,7 +137,6 @@ public class SearchDirectory {
         }
     }
 
-
     /**
      * souce에 주어진 경로에 있는 모든 파일을 훑음, 또한 하위 디렉토리 존재시, 재귀로 다시 호출
      * @param source
@@ -149,7 +149,7 @@ public class SearchDirectory {
                 for(File file : fileList){
                     if(file.isFile()){
                         // 파일이 있다면 파일 추가
-                        if(isAvalableFile(file)) {
+                        if(isAvailableFile(file)) {
                             allFiles.add(file);
                             System.out.println(file.getName());
                         }
@@ -172,7 +172,7 @@ public class SearchDirectory {
      * @param file
      * @return
      */
-    private boolean isAvalableFile(File file)
+    private boolean isAvailableFile(File file)
     {
 //        System.out.println(FilenameUtils.getExtension(file.getName()));
         return this.containsfilters.contains(FilenameUtils.getExtension(file.getName()));
