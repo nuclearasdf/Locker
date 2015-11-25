@@ -18,6 +18,7 @@ public class MainPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         WebEngine engine = webView.getEngine();
         engine.load("https://www.pikicast.com/");
 
