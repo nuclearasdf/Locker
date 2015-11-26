@@ -1,17 +1,10 @@
 package com.virus;
 
-import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
-import com.sun.javafx.application.HostServicesDelegate;
-import javafx.application.Application;
-import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * Created by 강희룡
@@ -29,6 +22,7 @@ public class PurchaseController {
 
 
     /**
+     * 하이퍼링크 이벤트 핸들러
      * "https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ"로 연결되면 됨
      * @param event
      */
@@ -37,6 +31,10 @@ public class PurchaseController {
     }
 
 
+    /**
+     * Submit 버튼 이벤트 핸들러
+     * @param event
+     */
     public void handleSubmitAction(ActionEvent event) {
         String code = txtDecryptCode.getText();
 
@@ -66,5 +64,4 @@ public class PurchaseController {
             }
         }
     }
-
 }

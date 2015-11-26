@@ -30,8 +30,8 @@ public class SearchDirectory {
 
         //1. 암호화 할 경로 설정
 
-        setDefaultDirectory("/Users/codertimo/Desktop/test");
-        this.isWindow = false;
+        setDefaultDirectory("C:\\test");
+        this.isWindow = true;
 
         //setDefaultDirectory();
 
