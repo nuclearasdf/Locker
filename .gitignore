@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 .idea/workspace.xml
 
 out/production/Ransomware/com/virus/security/SearchDirectory.class
 out/production/Ransomware/com/virus/security/SearchDirectory.class
 out/production/Ransomware/com/virus/Main.class
+=======
+.idea/workspace.xml
+>>>>>>> origin/master
+out/production/Ransomware/com/virus/security/SearchDirectory.class
+out/production/Ransomware/com/virus/EncryptionController.class
