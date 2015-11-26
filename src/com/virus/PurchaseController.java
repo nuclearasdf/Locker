@@ -25,7 +25,7 @@ public class PurchaseController {
 
     public Alert alert;
 
-    private static final String CODE = "test code";
+    private static final String CODE = "WelcomeToDimigo!";
 
 
     /**
@@ -33,7 +33,7 @@ public class PurchaseController {
      * @param event
      */
     public void handleLinkAction(ActionEvent event) {
-        Main.viewWeb("https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ");
+        Main.viewWeb("https://www.paypal.com?cmd=_pay-inv&id=INV2-FLDM-ETM8-JQ74-RKBN");
     }
 
 
@@ -53,8 +53,8 @@ public class PurchaseController {
                 alert.setTitle("Success");
                 alert.setHeaderText("축하합니다.");
                 alert.setContentText("복구 코드가 확인되었습니다. 복호화를 시작합니다.");
-
                 alert.showAndWait();
+                Main.encryptionController.decryption();
 
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
