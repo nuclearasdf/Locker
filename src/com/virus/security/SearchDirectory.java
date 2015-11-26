@@ -30,7 +30,7 @@ public class SearchDirectory {
 
         //1. 암호화 할 경로 설정
 
-        setDefaultDirectory("C:\\test");
+        setDefaultDirectory("/Users/codertimo/Desktop/test");
         this.isWindow = true;
 
         //setDefaultDirectory();
@@ -42,8 +42,7 @@ public class SearchDirectory {
     public boolean isEncrypted()
     {
         File file = new File(defaultDirectory);
-            for (File f : file.listFiles())
-            {
+            for (File f : file.listFiles()) {
                 if(f.getName().equals("helloworld.temp"))
                 {
                     return true;

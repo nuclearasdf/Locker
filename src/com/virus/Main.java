@@ -1,5 +1,8 @@
-﻿package com.virus;
 
+package com.virus;
+
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,10 +13,11 @@ public class Main extends Application {
     public static Stage stage;
     public static Scene scene;
     public static EncryptionController encryptionController;
-
+    public static HostServicesDelegate hostServices;
 
     public Main()
     {
+        hostServices = HostServicesFactory.getInstance(this);
         this.encryptionController= new EncryptionController("Mary has onecat1");
     }
 
@@ -58,6 +62,11 @@ public class Main extends Application {
         System.out.print("복호화 축하 화면으로 전환합니다");
 //        this.scene = new Scene(FXMLLoader.load(getClass().getResource("Undecripted.fxml")));
 //        stage.setScene(this.scene);
+    }
+
+    public static void viewWeb(String url)
+    {
+        hostServices.showDocument(url);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.virus;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class PurchaseController {
      * @param event
      */
     public void handleLinkAction(ActionEvent event) {
-        //HostServices.showDocument("http://google.com");
+        Main.viewWeb("https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ");
     }
 
 
