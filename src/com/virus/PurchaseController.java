@@ -27,6 +27,10 @@ public class PurchaseController {
     private static final String CODE = "test code";
 
 
+    /**
+     * "https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ"로 연결되면 됨
+     * @param event
+     */
     public void handleLinkAction(ActionEvent event) {
         //HostServices.showDocument("http://google.com");
     }
