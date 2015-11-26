@@ -12,9 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Main extends Application{
+public class Main extends Application {
 
     public static SearchDirectory searchDirectory = new SearchDirectory();
 
@@ -22,25 +21,30 @@ public class Main extends Application{
 
 
     public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            //encryption();
+            decryption();
 
-        encryption();
-        decryption();
-        
-        launch(args);
+        });
+        Thread t2 = new Thread(() -> {
+            launch(args);
+        });
+
+
+        t1.start();
+        t2.start();
 
     }
 
-    public static  void encryption()
-    {
+    public static void encryption() {
         ArrayList<File> files = searchDirectory.allFileSearch();
-        CryptoUtils.encrypt(files,key);
+        CryptoUtils.encrypt(files, key);
         searchDirectory.clearFiles();
     }
 
-    public static void decryption()
-    {
+    public static void decryption() {
         ArrayList<File> encrypted_files = searchDirectory.decryptSearch();
-        CryptoUtils.decrypt(encrypted_files,key);
+        CryptoUtils.decrypt(encrypted_files, key);
         searchDirectory.clearFiles();
     }
 
