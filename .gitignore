@@ -59,16 +59,3 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
-
-
-out/production/Ransomware/com/virus/EncryptionController.class
-
-out/production/Ransomware/com/virus/MainPageController.class
-
-out/production/Ransomware/com/virus/PurchaseController.class
-
-*.class
-
-.idea/workspace.xml
-
-*.class
