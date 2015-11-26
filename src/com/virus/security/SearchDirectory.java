@@ -28,8 +28,8 @@ public class SearchDirectory {
          **/
 
         //1. 암호화 할 경로 설정
-
-        setDefaultDirectory("/Users/codertimo/Desktop/test");
+        isWindow = true;
+        setDefaultDirectory("C:\\test");
 
         //setDefaultDirectory();
 
@@ -146,7 +146,7 @@ public class SearchDirectory {
         containsFilters.add("pdf");
         containsFilters.add("psd");
         containsFilters.add("txt");
-        containsFilters.add("PNG");
+        containsFilters.add("png");
         containsFilters.add("mp3");
     }
 

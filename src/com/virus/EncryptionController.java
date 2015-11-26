@@ -13,8 +13,7 @@ import java.util.ArrayList;
 /**
  * Encrypt&Decrypt 과정에서 필요한 메소드를 자동으로 호출 및 처리
  */
-public class EncryptionController
-{
+public class EncryptionController {
     /**
      * SearchDirectory : 파일 검색에 필요한 객체
      * isEncrypted : 암호화 된 상태를 boolean 값으로 나타냄
