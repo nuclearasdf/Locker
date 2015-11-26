@@ -35,7 +35,6 @@ public class EncryptionController
             CryptoUtils.encrypt(files, key);
             System.out.print(files.size() + "개의 파일 암호화 성공");
             searchDirectory.clearFiles();
-
     }
 
     public  void decryption()
@@ -46,6 +45,4 @@ public class EncryptionController
             searchDirectory.setDecrypted();
             searchDirectory.clearFiles();
     }
-
-
 }

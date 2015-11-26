@@ -39,7 +39,6 @@ public class Main extends Application {
         }
         else
         {
-
             scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
             stage.setScene(scene);
 
