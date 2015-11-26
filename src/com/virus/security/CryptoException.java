@@ -3,6 +3,10 @@ package com.virus.security;
 /**
  * Created by codertimo on 15. 11. 25..
  */
+
+/**
+ * 암호화 하는 과정에서 발생하는 Exeption Class
+ */
 public class CryptoException extends Exception
 {
     public CryptoException() {
