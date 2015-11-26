@@ -1,17 +1,9 @@
 ﻿package com.virus;
 
-
-import com.virus.security.CryptoUtils;
-import com.virus.security.SearchDirectory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.util.ArrayList;
 
 public class Main extends Application {
 
