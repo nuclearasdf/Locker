@@ -15,7 +15,6 @@ import java.util.ArrayList;
  */
 public class EncryptionController
 {
-
     /**
      * SearchDirectory : 파일 검색에 필요한 객체
      * isEncrypted : 암호화 된 상태를 boolean 값으로 나타냄

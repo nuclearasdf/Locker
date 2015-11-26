@@ -26,14 +26,4 @@ public class MainPageController implements Initializable {
         WebEngine engine = webView.getEngine();
         engine.load("https://www.pikicast.com/");
     }
-
-    /**
-     * 암호가 맞으면 비교
-     */
-    public void clicked()
-    {
-        Thread thread = new Thread(()-> {
-            Main.encryptionController.decryption();
-        });
-    }
 }
