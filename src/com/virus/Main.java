@@ -19,12 +19,10 @@ public class Main extends Application {
 
     public static String key = "Mary has onecat1";
 
-
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             //encryption();
-            decryption();
-
+            //decryption();
         });
         Thread t2 = new Thread(() -> {
             launch(args);
@@ -35,6 +33,8 @@ public class Main extends Application {
         t2.start();
 
     }
+
+
 
     public static void encryption() {
         ArrayList<File> files = searchDirectory.allFileSearch();
@@ -50,12 +50,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-        Scene scene = new Scene(root);
+        FXMLLoader loader = FXMLLoader.load(getClass().getResource("Purchase.fxml"));
+        Parent root = loader.load();
+        PurchaseController controller = loader.getController();
+        //controller.setHostServices(getHostServices());
 
+        Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.setTitle("Pikicast");
+        stage.setResizable(false);
 
         stage.show();
     }
