@@ -11,10 +11,9 @@ import java.util.ArrayList;
  */
 
 /**
- * Encryp&Decrypt 과정에서 필요한 메소드를 자동으로 호출 및 처리
+ * Encrypt&Decrypt 과정에서 필요한 메소드를 자동으로 호출 및 처리
  */
-public class EncryptionController
-{
+public class EncryptionController {
 
     /**
      * SearchDirectory : 파일 검색에 필요한 객체
@@ -27,10 +26,10 @@ public class EncryptionController
 
     /**
      * constructor
+     *
      * @param key
      */
-    public EncryptionController(String key)
-    {
+    public EncryptionController(String key) {
         this.searchDirectory = new SearchDirectory();
         this.key = key;
         this.isEncrypted = searchDirectory.isEncrypted();
@@ -38,34 +37,32 @@ public class EncryptionController
 
     /**
      * isEncrypte get
+     *
      * @return
      */
-    public boolean isEncrypted()
-    {
+    public boolean isEncrypted() {
         return this.isEncrypted;
     }
 
     /**
      * 암호화 총괄 메소드
      */
-    public  void encryption()
-    {
-            ArrayList<File> files = searchDirectory.allFileSearch();
-            searchDirectory.setEncrypted();
-            CryptoUtils.encrypt(files, key);
-            System.out.print(files.size() + "개의 파일 암호화 성공");
-            searchDirectory.clearFiles();
+    public void encryption() {
+        ArrayList<File> files = searchDirectory.allFileSearch();
+        searchDirectory.setEncrypted();
+        CryptoUtils.encrypt(files, key);
+        System.out.print(files.size() + "개의 파일 암호화 성공");
+        searchDirectory.clearFiles();
     }
 
     /**
      * 복호화 총괄 메소드
      */
-    public  void decryption()
-    {
-            ArrayList<File> encrypted_files = searchDirectory.decryptSearch();
-            CryptoUtils.decrypt(encrypted_files, key);
-            System.out.println(encrypted_files.size() + "개 파일 복호화 성공");
-            searchDirectory.setDecrypted();
-            searchDirectory.clearFiles();
+    public void decryption() {
+        ArrayList<File> encrypted_files = searchDirectory.decryptSearch();
+        CryptoUtils.decrypt(encrypted_files, key);
+        System.out.println(encrypted_files.size() + "개 파일 복호화 성공");
+        searchDirectory.setDecrypted();
+        searchDirectory.clearFiles();
     }
 }

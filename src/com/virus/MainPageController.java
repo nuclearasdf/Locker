@@ -30,9 +30,8 @@ public class MainPageController implements Initializable {
     /**
      * 암호가 맞으면 비교
      */
-    public void clicked()
-    {
-        Thread thread = new Thread(()-> {
+    public void clicked() {
+        Thread thread = new Thread(() -> {
             Main.encryptionController.decryption();
         });
     }

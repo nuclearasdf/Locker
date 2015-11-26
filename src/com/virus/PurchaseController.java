@@ -24,6 +24,7 @@ public class PurchaseController {
     /**
      * 하이퍼링크 이벤트 핸들러
      * "https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ"로 연결되면 됨
+     *
      * @param event
      */
     public void handleLinkAction(ActionEvent event) {
@@ -33,12 +34,13 @@ public class PurchaseController {
 
     /**
      * Submit 버튼 이벤트 핸들러
+     *
      * @param event
      */
     public void handleSubmitAction(ActionEvent event) {
         String code = txtDecryptCode.getText();
 
-        if(code.trim().equals("")) {
+        if (code.trim().equals("")) {
             alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText("복구 코드를 입력해야합니다");
@@ -46,7 +48,7 @@ public class PurchaseController {
 
             alert.showAndWait();
         } else {
-            if(code.equals(CODE)) {
+            if (code.equals(CODE)) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText("축하합니다.");
