@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24dd0544-b74c-4427-a666-ea94827949dc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Ransomware/com/virus/security/CryptoException.class" afterPath="$PROJECT_DIR$/out/production/Ransomware/com/virus/security/CryptoException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Ransomware/com/virus/security/CryptoUtils.class" afterPath="$PROJECT_DIR$/out/production/Ransomware/com/virus/security/CryptoUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/virus/EncryptionController.java" afterPath="$PROJECT_DIR$/src/com/virus/EncryptionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/virus/MainPageController.java" afterPath="$PROJECT_DIR$/src/com/virus/MainPageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/virus/security/SearchDirectory.java" afterPath="$PROJECT_DIR$/src/com/virus/security/SearchDirectory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="24dd0544-b74c-4427-a666-ea94827949dc" name="Default" comment="" />
     <ignored path="Ransomware.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
