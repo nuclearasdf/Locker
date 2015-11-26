@@ -68,3 +68,7 @@ out/production/Ransomware/com/virus/MainPageController.class
 out/production/Ransomware/com/virus/PurchaseController.class
 
 *.class
+
+.idea/workspace.xml
+
+*.class
