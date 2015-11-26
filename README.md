@@ -24,6 +24,10 @@
 ##암호화 되는 파일 리스트
 - jpg,docx,hwp,pptx,ppt,avi,mp4,mkv,max,cad,zip,pdf,psd,txt,mp3
 
+##복호화 키
+복호화 키는   WelcomeToDimio!   입니다
+>Paypal을 이용한 결재는 Ransomware의 실제적인 구현을 위한 연출입니다. 위 키를 사용해서 복호화를 해주세요.
+
 ##개발자
 한국디지털미디어고등학교 2학년 김준성 codertimo@gmail.com
 
