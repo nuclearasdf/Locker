@@ -22,6 +22,8 @@ import java.io.IOException;
  */
 public class PurchaseController {
     @FXML
+    private Parent root;
+    @FXML
     private TextField txtDecryptCode;
     @FXML
     private Hyperlink lnkPurchaseCode;
@@ -40,7 +42,7 @@ public class PurchaseController {
      * @param event
      */
     public void handleLinkAction(ActionEvent event) {
-        Main.viewWeb("https://www.paypal.com?cmd=_pay-inv&id=INV2-FLDM-ETM8-JQ74-RKBN");
+        Main.viewWeb("https://www.paypal.com?cmd=_pay-inv&id=INV2-YFHE-6XJF-AKME-XJBJ");
     }
 
 
@@ -68,7 +70,7 @@ public class PurchaseController {
                 alert.showAndWait();
 
                 Scene scene;
-                Scene thisScene = txtDecryptCode.getScene();
+                Scene thisScene = root.getScene();
                 Stage stage = (Stage) thisScene.getWindow();
 
                 try {
@@ -77,14 +79,15 @@ public class PurchaseController {
                     Task<Void> task = new Task<Void>() {
                         @Override
                         protected Void call() throws Exception {
-                            txtDecryptCode.setDisable(true);
-                            btnSubmit.setDisable(true);
-                            lnkPurchaseCode.setDisable(true);
-
                             Main.encryptionController.decryption();
                             return null;
                         }
                     };
+                    task.setOnRunning(e -> {
+                        txtDecryptCode.setDisable(true);
+                        btnSubmit.setDisable(true);
+                        lnkPurchaseCode.setDisable(true);
+                    });
                     task.setOnSucceeded(e -> {
                         txtDecryptCode.setDisable(false);
                         btnSubmit.setDisable(false);
@@ -95,6 +98,17 @@ public class PurchaseController {
                         stage.setResizable(true);
                         stage.setTitle("Pikicast");
                         stage.show();
+                    });
+                    task.setOnFailed(e -> {
+                        txtDecryptCode.setDisable(false);
+                        btnSubmit.setDisable(false);
+                        lnkPurchaseCode.setDisable(false);
+
+                    });
+                    task.setOnCancelled(e -> {
+                        txtDecryptCode.setDisable(true);
+                        btnSubmit.setDisable(true);
+                        lnkPurchaseCode.setDisable(true);
                     });
                     new Thread(task).start();
                 } catch (IOException e) {

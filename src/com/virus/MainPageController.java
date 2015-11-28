@@ -17,7 +17,7 @@ public class MainPageController implements Initializable {
     private WebView webView;
 
     /**
-     * 가짜 앱으로 사용자를 속이기 위해 피키캐스트 페이지를 보여줌.
+     * 가짜 앱으로 사용자를 속이기 위해 피키캐스트 페이지를 보여줌
      * @param location
      * @param resources
      */
