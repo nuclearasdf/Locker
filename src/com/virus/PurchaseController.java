@@ -9,6 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -24,6 +25,8 @@ public class PurchaseController {
     private TextField txtDecryptCode;
     @FXML
     private Hyperlink lnkPurchaseCode;
+    @FXML
+    private Button btnSubmit;
 
     public Alert alert;
 
@@ -74,11 +77,19 @@ public class PurchaseController {
                     Task<Void> task = new Task<Void>() {
                         @Override
                         protected Void call() throws Exception {
+                            txtDecryptCode.setDisable(true);
+                            btnSubmit.setDisable(true);
+                            lnkPurchaseCode.setDisable(true);
+
                             Main.encryptionController.decryption();
                             return null;
                         }
                     };
                     task.setOnSucceeded(e -> {
+                        txtDecryptCode.setDisable(false);
+                        btnSubmit.setDisable(false);
+                        lnkPurchaseCode.setDisable(false);
+
                         thisScene.setCursor(Cursor.DEFAULT);
                         stage.setScene(scene);
                         stage.setResizable(true);
