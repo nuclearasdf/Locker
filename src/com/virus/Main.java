@@ -27,7 +27,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         if (encryptionController.isEncrypted()) {
-            System.out.print("이미 감염되있는 PC 입니다");
+            System.out.println("이미 감염되있는 PC 입니다");
             scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
             stage.setScene(scene);
@@ -45,6 +45,7 @@ public class Main extends Application {
 
             scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
+            stage.setResizable(false);
             stage.setScene(scene);
         }
         Main.stage = stage;
