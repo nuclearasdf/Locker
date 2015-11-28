@@ -41,6 +41,7 @@ public class Main extends Application {
             stage.setScene(scene1);
             stage.show();
 
+            // 여기 좀 이상한데 못고치겠음
             Task<Void> task = new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
