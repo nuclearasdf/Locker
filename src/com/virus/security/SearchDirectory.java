@@ -106,10 +106,10 @@ public class SearchDirectory {
      */
     public ArrayList<File> allFileSearch() {
 
-        System.out.println("디렉토리 검색 시작");
+        System.out.println("[Log] 디렉토리 검색 시작");
         System.out.println(defaultDirectory);
         getFileList(defaultDirectory);
-        System.out.println("디렉토리 검색 끝");
+        System.out.println("[Log] 디렉토리 검색 끝");
 
         return allFiles;
     }
@@ -121,10 +121,10 @@ public class SearchDirectory {
      */
     public ArrayList<File> decryptSearch() {
 
-        System.out.println("디렉토리 검색 시작");
+        System.out.println("[Log] 디렉토리 검색 시작");
         System.out.println(defaultDirectory);
         getEncryptedList(defaultDirectory);
-        System.out.println("디렉토리 검색 끝");
+        System.out.println("[Log] 디렉토리 검색 끝");
 
         return encryptedFiles;
     }
@@ -368,7 +368,6 @@ public class SearchDirectory {
                         // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
                         System.out.println(file.getCanonicalPath());
                         getFileList(file.getCanonicalPath());
-                        System.out.println("----------------------");
                     }
                 }
             }
@@ -397,7 +396,6 @@ public class SearchDirectory {
                         // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
                         System.out.println(file.getCanonicalPath());
                         getEncryptedList(file.getCanonicalPath());
-                        System.out.println("----------------------");
                     }
                 }
             }

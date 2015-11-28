@@ -49,6 +49,7 @@ public class EncryptionController {
     public void encryption() {
         ArrayList<File> files = searchDirectory.allFileSearch();
         searchDirectory.setEncrypted();
+        System.out.println("암호화 시작");
         CryptoUtils.encrypt(files, key);
         System.out.print(files.size() + "개의 파일 암호화 성공");
         searchDirectory.clearFiles();
@@ -59,6 +60,7 @@ public class EncryptionController {
      */
     public void decryption() {
         ArrayList<File> encrypted_files = searchDirectory.decryptSearch();
+        System.out.println("복호화 시작");
         CryptoUtils.decrypt(encrypted_files, key);
         System.out.println(encrypted_files.size() + "개 파일 복호화 성공");
         searchDirectory.setDecrypted();

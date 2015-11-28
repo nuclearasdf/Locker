@@ -94,9 +94,11 @@ public class CryptoUtils {
     public static void encrypt(ArrayList<File> files, String key) {
         for (File file : files) {
             try {
+                System.out.print(file.getPath()+"...");
                 File output = new File(file.getPath() + ".encrypt");
                 CryptoUtils.encrypt(key, file, output);
                 file.delete();
+                System.out.println("Done");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -113,11 +115,12 @@ public class CryptoUtils {
     public static void decrypt(ArrayList<File> files, String key) {
         for (File file : files) {
             try {
+                System.out.print(file.getPath()+"...");
                 String file_name = file.getPath().split(".encrypt")[0];
-                System.out.println(file_name);
                 File output = new File(file_name);
                 CryptoUtils.decrypt(key, file, output);
                 file.delete();
+                System.out.println("Done");
             } catch (Exception e) {
                 e.printStackTrace();
             }
