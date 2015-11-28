@@ -107,9 +107,7 @@ public class SearchDirectory {
     public ArrayList<File> allFileSearch() {
 
         System.out.println("디렉토리 검색 시작");
-
         System.out.println(defaultDirectory);
-
         getFileList(defaultDirectory);
         System.out.println("디렉토리 검색 끝");
 
@@ -125,9 +123,7 @@ public class SearchDirectory {
 
         System.out.println("디렉토리 검색 시작");
         System.out.println(defaultDirectory);
-
         getEncryptedList(defaultDirectory);
-
         System.out.println("디렉토리 검색 끝");
 
         return encryptedFiles;
@@ -333,7 +329,7 @@ public class SearchDirectory {
 
 
     /**
-     * 기본 디렉토리 설정 : Window용
+     * 기본 디렉토리 설정 : Windows 용
      */
     private void setWindowDefaultDirectory() {
         File windowDir = new File(System.getenv("SystemDrive") + "\\Users\\");
@@ -418,7 +414,7 @@ public class SearchDirectory {
      */
 
     private boolean isAvailableFile(File file) {
-        return this.containsFilters.contains(FilenameUtils.getExtension(file.getName()));
+        return this.containsFilters.contains(FilenameUtils.getExtension(file.getName().toLowerCase()));
     }
 
     /**

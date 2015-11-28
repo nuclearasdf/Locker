@@ -1,9 +1,12 @@
 package com.virus;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
@@ -60,21 +63,32 @@ public class PurchaseController {
                 alert.setHeaderText("축하합니다.");
                 alert.setContentText("복구 코드가 확인되었습니다. 복호화를 시작합니다.");
                 alert.showAndWait();
-                Main.scene.setCursor(Cursor.WAIT);
-                Main.encryptionController.decryption();
-                Main.scene.setCursor(Cursor.DEFAULT);
 
-                Main.stage.close();
-                Stage stage = new Stage();
+                Scene scene;
+                Scene thisScene = txtDecryptCode.getScene();
+                Stage stage = (Stage) thisScene.getWindow();
+
                 try {
-                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml"))));
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
+                    thisScene.setCursor(Cursor.WAIT);
+                    Task<Void> task = new Task<Void>() {
+                        @Override
+                        protected Void call() throws Exception {
+                            Main.encryptionController.decryption();
+                            return null;
+                        }
+                    };
+                    task.setOnSucceeded(e -> {
+                        thisScene.setCursor(Cursor.DEFAULT);
+                        stage.setScene(scene);
+                        stage.setResizable(true);
+                        stage.setTitle("Pikicast");
+                        stage.show();
+                    });
+                    new Thread(task).start();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Main.stage = stage;
-                Main.stage.setTitle("Pikicast");
-                Main.stage.setResizable(true);
-                Main.stage.show();
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Fail");
