@@ -151,6 +151,7 @@ public class SearchDirectory {
         containsFilters.add("txt");
         containsFilters.add("wpd");
         containsFilters.add("wps");
+        containsFilters.add("hwp");
 
         // Data files
         containsFilters.add("csv");
@@ -215,7 +216,7 @@ public class SearchDirectory {
         containsFilters.add("psd");
         containsFilters.add("pspimage");
         containsFilters.add("tga");
-        containsFilters.add("htm");
+        containsFilters.add("thm");
         containsFilters.add("tif");
         containsFilters.add("tiff");
         containsFilters.add("yuv");
@@ -230,6 +231,53 @@ public class SearchDirectory {
         containsFilters.add("indd");
         containsFilters.add("pct");
         containsFilters.add("pdf");
+
+        // Spreadsheet files
+        containsFilters.add("xlr");
+        containsFilters.add("xls");
+        containsFilters.add("xlsx");
+
+        // Database files
+        containsFilters.add("db");
+        containsFilters.add("dbf");
+        containsFilters.add("sql");
+
+        // Compressed files
+        containsFilters.add("7z");
+        containsFilters.add("rar");
+        containsFilters.add("zip");
+        containsFilters.add("tar.gz");
+
+        // Executable files
+        containsFilters.add("apk");
+        containsFilters.add("app");
+        containsFilters.add("com");
+        containsFilters.add("exe");
+        containsFilters.add("jar");
+
+        // Web files
+        containsFilters.add("asp");
+        containsFilters.add("aspx");
+        containsFilters.add("css");
+        containsFilters.add("htm");
+        containsFilters.add("html");
+        containsFilters.add("js");
+        containsFilters.add("jsp");
+        containsFilters.add("php");
+        containsFilters.add("xhtml");
+
+        // Font files
+        containsFilters.add("fnt");
+        containsFilters.add("fon");
+        containsFilters.add("oft");
+        containsFilters.add("ttf");
+
+        // Mick files
+        containsFilters.add("crdownload");
+        containsFilters.add("ics");
+        containsFilters.add("msi");
+        containsFilters.add("part");
+        containsFilters.add("torrent");
 
         // 아 귀찮다
         // http://fileinfo.com/filetypes/common
