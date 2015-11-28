@@ -4,6 +4,9 @@ import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -38,14 +41,14 @@ public class SearchDirectory {
     }
 
     /**
-     * 현재 이 컴퓨터가 암호화 되어있는 상태인지 helloworld.temp의 파일 여부로 결정하는 함수
+     * 현재 이 컴퓨터가 암호화 되어있는 상태인지 cryptoinfo.dat의 파일 여부로 결정하는 함수
      *
      * @return
      */
     public boolean isEncrypted() {
         File file = new File(defaultDirectory);
         for (File f : file.listFiles()) {
-            if (f.getName().equals("helloworld.temp")) {
+            if (f.getName().equals("cryptoinfo.dat")) {
                 return true;
             }
         }
@@ -53,19 +56,22 @@ public class SearchDirectory {
     }
 
     /**
-     * helloworld.temp파일을 생성함으로서 이 컴퓨터가 암호화 되었다는 지표를 남기는 함수
+     * cryptoinfo.dat파일을 생성함으로서 이 컴퓨터가 암호화 되었다는 지표를 남기는 함수
      */
     public void setEncrypted() {
         try {
             if (defaultDirectory.endsWith("/") || defaultDirectory.endsWith("\\")) {
-                FileOutputStream output = new FileOutputStream(defaultDirectory + "helloworld.temp");
+                FileOutputStream output = new FileOutputStream(defaultDirectory + "cryptinfo.dat");
                 output.close();
             } else {
                 if (isWindow) {
-                    FileOutputStream output = new FileOutputStream(defaultDirectory + "\\helloworld.temp");
+                    FileOutputStream output = new FileOutputStream(defaultDirectory + "\\cryptoinfo.dat");
                     output.close();
+                    Path path = FileSystems.getDefault().getPath(defaultDirectory, "cryptoinfo.dat");
+                    Files.setAttribute(path, "dos:hidden", true);
                 } else {
-                    FileOutputStream output = new FileOutputStream(defaultDirectory + "/helloworld.temp");
+                    // Mac에서도 파일 숨기게 만들어줘
+                    FileOutputStream output = new FileOutputStream(defaultDirectory + "/cryptoinfo.dat");
                     output.close();
                 }
             }
@@ -76,18 +82,18 @@ public class SearchDirectory {
     }
 
     /**
-     * helloworld.temp파일을 제거하는 함수
+     * cryptoinfo.dat파일을 제거하는 함수
      */
     public void setDecrypted() {
         if (defaultDirectory.endsWith("/") || defaultDirectory.endsWith("\\")) {
-            File file = new File(defaultDirectory + "helloworld.temp");
+            File file = new File(defaultDirectory + "cryptoinfo.dat");
             file.delete();
         } else {
             if (isWindow) {
-                File file = new File(defaultDirectory + "\\helloworld.temp");
+                File file = new File(defaultDirectory + "\\cryptoinfo.dat");
                 file.delete();
             } else {
-                File file = new File(defaultDirectory + "/helloworld.temp");
+                File file = new File(defaultDirectory + "/cryptoinfo.dat");
                 file.delete();
             }
         }
