@@ -1,6 +1,5 @@
 package com.virus;
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,8 +29,6 @@ public class PurchaseController {
     @FXML
     private Button btnSubmit;
 
-    public Alert alert;
-
     private static final String CODE = "WelcomeToDimigo!";
 
 
@@ -51,9 +48,9 @@ public class PurchaseController {
      *
      * @param event
      */
-    public void handleSubmitAction(ActionEvent event) {
+    public void handleSubmitAction(ActionEvent event) throws IOException {
         String code = txtDecryptCode.getText();
-
+        Alert alert;
         if (code.trim().equals("")) {
             alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -73,47 +70,43 @@ public class PurchaseController {
                 Scene thisScene = root.getScene();
                 Stage stage = (Stage) thisScene.getWindow();
 
-                try {
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("MainPage.fxml")));
-                    thisScene.setCursor(Cursor.WAIT);
-                    Task<Void> task = new Task<Void>() {
-                        @Override
-                        protected Void call() throws Exception {
-                            Main.encryptionController.decryption();
-                            return null;
-                        }
-                    };
-                    task.setOnRunning(e -> {
-                        txtDecryptCode.setDisable(true);
-                        btnSubmit.setDisable(true);
-                        lnkPurchaseCode.setDisable(true);
-                    });
-                    task.setOnSucceeded(e -> {
-                        txtDecryptCode.setDisable(false);
-                        btnSubmit.setDisable(false);
-                        lnkPurchaseCode.setDisable(false);
+                scene = new Scene(FXMLLoader.load(getClass().getResource("Success.fxml")));
 
-                        thisScene.setCursor(Cursor.DEFAULT);
-                        stage.setScene(scene);
-                        stage.setResizable(true);
-                        stage.setTitle("Pikicast");
-                        stage.show();
-                    });
-                    task.setOnFailed(e -> {
-                        txtDecryptCode.setDisable(false);
-                        btnSubmit.setDisable(false);
-                        lnkPurchaseCode.setDisable(false);
+                thisScene.setCursor(Cursor.WAIT);
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        Main.encryptionController.decryption();
+                        return null;
+                    }
+                };
+                task.setOnRunning(e -> {
+                    txtDecryptCode.setDisable(true);
+                    btnSubmit.setDisable(true);
+                    lnkPurchaseCode.setDisable(true);
+                });
+                task.setOnSucceeded(e -> {
+                    txtDecryptCode.setDisable(false);
+                    btnSubmit.setDisable(false);
+                    lnkPurchaseCode.setDisable(false);
 
-                    });
-                    task.setOnCancelled(e -> {
-                        txtDecryptCode.setDisable(true);
-                        btnSubmit.setDisable(true);
-                        lnkPurchaseCode.setDisable(true);
-                    });
-                    new Thread(task).start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    thisScene.setCursor(Cursor.DEFAULT);
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.setTitle("감사합니다");
+                    stage.show();
+                });
+                task.setOnFailed(e -> {
+                    txtDecryptCode.setDisable(false);
+                    btnSubmit.setDisable(false);
+                    lnkPurchaseCode.setDisable(false);
+                });
+                task.setOnCancelled(e -> {
+                    txtDecryptCode.setDisable(true);
+                    btnSubmit.setDisable(true);
+                    lnkPurchaseCode.setDisable(true);
+                });
+                new Thread(task).start();
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Fail");
