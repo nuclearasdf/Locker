@@ -31,9 +31,12 @@ public class SearchDirectory {
          **/
 
         //1. 암호화 할 경로 설정
+        //C:\test 폴더가 있어야됨
         isWindow = true;
         setDefaultDirectory("C:\\test");
 
+
+        //이거 무서워서 못함
         //setDefaultDirectory();
 
         //2. 암호화할 파일 타입을 설정
