@@ -63,5 +63,4 @@ public class Main extends Application {
     public static void viewWeb(String url) {
         hostServices.showDocument(url);
     }
-
 }

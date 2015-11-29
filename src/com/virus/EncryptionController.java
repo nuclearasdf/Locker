@@ -51,7 +51,7 @@ public class EncryptionController {
         searchDirectory.setEncrypted();
         System.out.println("암호화 시작");
         CryptoUtils.encrypt(files, key);
-        System.out.print(files.size() + "개의 파일 암호화 성공");
+        System.out.println(files.size() + "개의 파일 암호화 성공");
         searchDirectory.clearFiles();
     }
 
