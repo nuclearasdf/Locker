@@ -27,6 +27,7 @@ public class PurchaseController {
 
     /**
      * Submit 버튼 이벤트 핸들러
+     *
      * @param event
      */
     public void handleSubmitAction(ActionEvent event) throws IOException {
