@@ -24,7 +24,7 @@ public class SuccessController {
 
         stage.setScene(scene);
         stage.setResizable(true);
-        stage.setTitle("Pikicast");
+        stage.setTitle("Ransomware");
         stage.show();
     }
 }
