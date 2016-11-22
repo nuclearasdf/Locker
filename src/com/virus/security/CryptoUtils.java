@@ -23,27 +23,13 @@ public class CryptoUtils {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
 
-    /**
-     * 파일 암호화 메소드
-     *
-     * @param key
-     * @param inputFile
-     * @param outputFile
-     * @throws CryptoException
-     */
+ 
     public static void encrypt(String key, File inputFile, File outputFile)
             throws CryptoException {
         doCrypto(Cipher.ENCRYPT_MODE, key, inputFile, outputFile);
     }
 
-    /**
-     * 파일 복호화 메소드
-     *
-     * @param key
-     * @param inputFile
-     * @param outputFile
-     * @throws CryptoException
-     */
+ 
     public static void decrypt(String key, File inputFile, File outputFile)
             throws CryptoException {
         doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);
