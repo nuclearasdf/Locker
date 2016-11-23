@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by codertimo on 15. 11. 16.
+ changed by nuclear
  */
 public class SearchDirectory {
 
