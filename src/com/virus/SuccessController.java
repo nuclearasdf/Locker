@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by 강희룡
- * 2015-11-29
+ * Modified by nuclear
  */
 public class SuccessController {
     @FXML
@@ -24,7 +24,7 @@ public class SuccessController {
 
         stage.setScene(scene);
         stage.setResizable(true);
-        stage.setTitle("Pikicast");
+        stage.setTitle("Ransomware");
         stage.show();
     }
 }
