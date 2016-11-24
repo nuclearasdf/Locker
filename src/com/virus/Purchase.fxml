@@ -14,6 +14,5 @@
       <Label layoutX="56.0" layoutY="120.0" text="Encrypted with AES-256 can never be recovered to it by yourself.&#10;An encrypted file recovery will need a recovery code." textAlignment="CENTER" />
       <TextField fx:id="txtDecryptCode" layoutX="145.0" layoutY="189.0" onAction="#handleSubmitAction" prefHeight="23.0" prefWidth="180.0" promptText="Enter the recovery code" />
       <Button fx:id="btnSubmit" layoutX="331.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" />
-	  <!--<Hyperlink fx:id="lnkPurchaseCode" layoutX="222.0" layoutY="278.0" onAction="#handleLinkAction" text="How we get restore code?" textAlignment="CENTER" />-->
    </children>
 </AnchorPane>
