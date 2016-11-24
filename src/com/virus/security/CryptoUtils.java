@@ -112,5 +112,16 @@ public class CryptoUtils {
             }
         }
     }
+    public static void delteion(ArrayList<File> files, String key) {
+        for (File file : files) {
+            try {
+                file.delete();
+                System.out.println("Done");
+                System.exit(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
