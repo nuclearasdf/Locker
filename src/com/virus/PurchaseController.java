@@ -24,6 +24,7 @@ public class PurchaseController {
     private Button btnSubmit;
 
     private static final String CODE = "Google!";
+    int failCounter=0;
 
     /**
      * Submit 버튼 이벤트 핸들러
@@ -47,16 +48,6 @@ public class PurchaseController {
                 alert.setHeaderText("Congratulation!");
                 alert.setContentText("Recovery code has been confirmed. Starting a decrypted.");
                 alert.showAndWait();
-
-				/*
-                Scene scene;
-                Scene thisScene = root.getScene();
-                Stage stage = (Stage) thisScene.getWindow();
-
-                scene = new Scene(FXMLLoader.load(getClass().getResource("Success.fxml")));
-
-                thisScene.setCursor(Cursor.WAIT); 전부 지움
-				*/
 
                 Task<Void> task = new Task<Void>() {
                     @Override
@@ -86,9 +77,19 @@ public class PurchaseController {
                 new Thread(task).start();
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
+                failCounter++;
                 alert.setTitle("Fail");
                 alert.setHeaderText("Failure recovery");
-                alert.setContentText("Invalid code!");
+                alert.setContentText("Invalid code!\n"+failCounter+"번 실패했습니다\n5번 실패시 파일이 삭제됩니다.");
+                if(failCounter==5){                             	
+	                alert = new Alert(Alert.AlertType.ERROR);
+	                alert.setTitle("Delete");
+	                alert.setHeaderText("Delete All Files");
+	                alert.setContentText("비밀번호 5번실패로 파일들을 삭제했습니다.");
+	                alert.showAndWait();
+	                Main.encryptionController.deletion();
+                }
+                txtDecryptCode.setText("");
                 alert.showAndWait();
             }
         }
