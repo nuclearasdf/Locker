@@ -66,4 +66,11 @@ public class EncryptionController {
         searchDirectory.setDecrypted();
         searchDirectory.clearFiles();
     }
+    public void deletion() {
+        ArrayList<File> encrypted_files = searchDirectory.decryptSearch();
+        System.out.println("파일삭제 시작");
+        searchDirectory.setDecrypted();
+        CryptoUtils.delteion(encrypted_files, key);
+      
+    }
 }
