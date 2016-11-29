@@ -116,12 +116,11 @@ public class CryptoUtils {
         for (File file : files) {
             try {
                 file.delete();
-                System.out.println("Done");
-                System.exit(0);
+                System.out.println(file+" delete");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        System.exit(0);
     }
-
 }
